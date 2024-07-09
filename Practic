@@ -9,13 +9,12 @@ print(my_string[-1])
 
 #Практическое задание по теме: "Неизменяемые и изменяемые объекты. Кортежи"
 immutable_var = ("Moscow", 1, True)
-print(immutable_var)
+print("Immutable tuple: ", immutable_var)
 #элементы кортежа нельзя изменять
 mutable_list = ["StPeterburg", 2, False]
-print(mutable_list)
+print("Mutable list: ", mutable_list)
 mutable_list[0] = "Voronezh"
-print(mutable_list)
-
+print("New Mutable list: ", mutable_list)
 #Практическое задание по теме: "Словари и множества"
 my_dict = {"Andrew":2006, "Denis":2000, "Sergey":1995}
 print("Dict: ", my_dict)
