@@ -1,38 +1,31 @@
-print('1st program')
-print(9**0.5*5)
-print('2st program')
-print(9.99 > 9.98 and 1000 != 1000.1)
-print('3st program')
-print(23 + 67)
-print('4st program')
-n1 = 13.42
-n2 = 42.13
-print(str(round(n1%13, 2)) == str(n2 - 0.13) or str(round(n2%42, 2)) == str(n1 - 0.42))
+#Практическая работа по уроку "Организация программ и методы строк."
+my_string = input()
+print(my_string.__len__())
+print(my_string.upper())
+print(my_string.lower())
+print(my_string.replace(' ',''))
+print(my_string[0])
+print(my_string[-1])
 
+#Практическое задание по теме: "Неизменяемые и изменяемые объекты. Кортежи"
+immutable_var = ("Moscow", 1, True)
+print(immutable_var)
+#элементы кортежа нельзя изменять
+mutable_list = ["StPeterburg", 2, False]
+print(mutable_list)
+mutable_list[0] = "Voronezh"
+print(mutable_list)
 
-#практика по строкам и индексикации
-city = "Moscow"
-print(city[0])
-print(city[-1])
-print(city[3:6])
-print(city[::-1])
-print(city[0:6:2])
-
-
-#парктика по переменным
-dz = 12
-hours = 1.5
-course = "Python"
-time_for_dz = hours / dz
-print("Курс: " + course + ", всего задач:" + str(dz) + ", затрачено часов: " + str(hours) + ", среднее время выполнения: " + str(time_for_dz) +" часа.")
-
-
-#Практическая работа по уроку "Динамическая типизация"
-name = "Andrew"
-print("Name: " + name)
-age = 18
-print("Age: " + str(age))
-age = int(age) + 1
-print("NewAge: " + str(age))
-is_student = True
-print("is_student: " + str(is_student))
+#Практическое задание по теме: "Словари и множества"
+my_dict = {"Andrew":2006, "Denis":2000, "Sergey":1995}
+print("Dict: ", my_dict)
+print("Existing value: ", my_dict['Andrew'])
+my_dict.update({'Sasha':2009, 'Valeriya':2010})
+print("Modified dictionary: ", my_dict)
+print("Deleted value:", my_dict['Sasha'])
+my_dict.pop('Sasha')
+my_set = {1, 1, "David", "David", 21.48, 21.48}
+print("Set: ", my_set)
+my_set.add(("Moscow", 29))
+my_set.remove(1)
+print("Modified set: ", my_set)
