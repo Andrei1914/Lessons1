@@ -75,7 +75,3 @@ else:
     print("Матрица:")
     for i in matrix:
         print(*i)
-Average_score.update({students_list[2]:  sum(grades[2]) / len(grades[2])})
-Average_score.update({students_list[3]:  sum(grades[3]) / len(grades[3])})
-Average_score.update({students_list[4]:  sum(grades[4]) / len(grades[4])})
-print(Average_score)
