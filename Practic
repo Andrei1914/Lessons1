@@ -1,77 +1,48 @@
-#2023/09/28 00:00|Домашняя работа по уроку "Условная конструкция. Операторы if, elif, else."
-first = int(input('Введите первое число: '))
-second = int(input('Введите второе число: '))
-third = int(input('Введите третье число: '))
-if first == second and first == third:
-    print('3')
-elif first == second or first == third or second == third:
-    print('2')
-else:
-    print('0')
+#2023/10/04 00:00|Домашняя работа по уроку "Пространство имён"
+calls = 0
+string = str(input('Введите строку: '))
+def  count_calls():
+    global calls
+    calls += 1
+def  string_info (string):
+    result = (len(string), string.upper(),string.lower())
+    count_calls()
+    return result
+def is_contains(string, list_to_search):
+    string = str(string).lower()
+    list_to_search = list(list_to_search)
+    count_calls()
+    for i in range(len(list_to_search)):
+        if str(list_to_search[i]).lower() == string:
+            result = True
+            break
+        else:
+            result = False
+            continue
+    return result
 
-#Домашняя работа по уроку "Стиль кода часть II. Цикл While."
-my_list = [42, 69, 322, 13, 0, 99, -5, 9, 8, 7, -6, 5]
-a = -1
-while a <= len(my_list):
-    a += 1
-    if my_list[a] < 0:
-        print('Встретилось отрицательное число!')
-        break
-    elif my_list[a] == 0:
-        print('0 - это не положительное и не отрицательное число')
+print(string_info(string))
+print(string_info(string))
+print(is_contains('cube', ['recycling', 'cyclic', 'sphere'])) # No matches
+print(is_contains('GaZEL', ['List', 'Snow', 'Gazelist', 'gAzeL'])) # Urban ~ urBAN
+print(calls)
+
+
+#2023/10/05 00:00|Домашняя работа по уроку "Способы вызова функции"
+variant = ('.com', '.net', '.ru')
+def send_email(message, recipient, sender = "university.help@gmail.com"):
+    if "@" in recipient:
+        if recipient.endswith(variant):
+            if recipient == sender:
+                print("Невозможно отправить письмо самому себе! ")
+            else:
+                print(message, "Отправлен на: ", sender)
+        else:
+            print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}! ")
     else:
-        print(my_list[a])
+        print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}! ")
 
+message = str(input("Введите текст письма: "))
+recipient = str(input("Введите вашу почту: "))
 
-#2023/09/30 00:00|Домашняя работа по уроку "Цикл for. Элементы списка. Полезные функции в цикле"
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-n = 0
-primes = []
-not_primes = []
-i = 0
-for i in range(len(numbers)):
-    is_prime = True
-    n = numbers[i]
-    if n < 2:
-        print(n, '- не простое и не составное число')
-        continue
-    else:
-        f = n ** (1 / 2)
-        for a in range(2, int(f + 1)):
-            if n % a == 0:
-                is_prime = False
-                break
-    if not (is_prime):
-        not_primes.append(n)
-    else:
-        primes.append(n)
-
-
-print('Простые числа ', primes)
-print('Составные числа', not_primes)
-
-
-#2023/10/01 00:00|Домашняя работа по уроку "Функции в Python.Функция с параметром"
-
-def get_matrix(n, m, value):
-    matrix = []
-    for i in range(n):
-        matrix.append([])
-        for j in range(m):
-            matrix[i].append(value)
-    print(matrix)
-    return matrix
-
-
-n = int(input("Введите количество строк матрицы: "))
-m = int(input("Введите количество столбцов матрицы: "))
-value = int(input("Ведите значение матрицы: "))
-matrix = get_matrix(n, m, value)
-if n <= 0:
-    print("Задано неверное количество строк:", n)
-elif m <=0:
-    print("Задано неверное количество столбцов:" ,m)
-else:
-    print("Матрица:")
-    for i in matrix:
-        print(*i)
+send_email(message, recipient)
