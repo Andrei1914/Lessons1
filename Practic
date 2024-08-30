@@ -1,34 +1,71 @@
-#2023/10/05 00:00|Домашняя работа по уроку "Способы вызова функции"
-variant = ('.com', '.net', '.ru')
-def send_email(message, recipient, sender):
+2023/09/29 00:00|Домашняя работа по уроку "Стиль кода часть II. Цикл While."
+my_list = [42, 69, 322, 13, 0, 99, -5, 9, 8, 7, -6, 5]
+i = 0
 
-    if sender != "university.help@gmail.com":
-        print(f"НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Отправлено письмо с адреса {sender} на адрес {recipient}! ")
+while i < len(my_list):
+    num = my_list[i]
+    i += 1
+    if num == 0:
+        continue
+    elif num < 0:
+        break
     else:
-        if "@" in recipient:
-            if recipient.endswith(variant):
-                if recipient == sender:
-                    print("Невозможно отправить письмо самому себе! ")
-                else:
-                    print(message, "Отправлен на: ", sender)
-            else:
-                print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}! ")
-        else:
-            print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}! ")
+        print(num)
+# Домашняя работа по уроку "Цикл for. Элементы списка. Полезные функции в цикле"
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+primes = []
+not_primes = []
+i = 0
+for i in numbers:
+    is_prime = True
+    if i < 2:   # не 0 и не 1
+        print(i, '- не простое и не сложное число')
+        continue
+    else:
+        f = i ** (1 / 2)  # Корень квадратный из n
+    for a in range(2, int(f + 1)):
+        if i % a == 0:
+            is_prime = False
+            break
+    if not (is_prime):
+        not_primes.append(i)
+    else:
+        primes.append(i)
+is_prime = True  # признак простого числа
+print('Простые числа ', primes)
+print('Составные числа', not_primes)
 
+
+#2023/10/05 00:00|Домашняя работа по уроку "Способы вызова функции"
 message = str(input("Введите текст письма: "))
 recipient = str(input("Введите вашу почту: "))
-sender = str(input("Введите отправителя: "))
-send_email(message, recipient, sender)
+valid_recipient = recipient.endswith(('.com', '.net', '.ru')) and '@' in recipient
+def send_email(message, recipient, sender = "university.help@gmail.com"):
 
+        if valid_recipient:
+            if sender == recipient:
+                print("Нельзя отправить письмо самому себе!")
+            else:
+                print('Письмо отправлено')
+        else:
+            print(f"Невозможно отправить письмо с {sender} на {recipient}!")
 
 #2023/10/07 00:00|Самостоятельная работа по уроку "Распаковка позиционных параметров".
+def print_params(a = 1.23, b = ['Andrey', 'Denis', 'Artur'], c = True):
+    print(a, b, c)
+
+print_params()
+
+def print_params(*values_list_1):
+    print(values_list_1)
+
+values_list_1 = [8,12, 'Russia', True]
+print_params(values_list_1)
 def print_params(c, *values_list):
     print(values_list, c)
 
 values_list = [12.21 , "Moscow"]
 print_params(True, values_list)
-
 
 #2023/10/08 00:00|Самостоятельная работа по уроку "Произвольное число параметров".
 
@@ -39,6 +76,25 @@ def single_root_words(root_word, *other_words):
             same_words.append(i)
 
     print(same_words)
+
+other_words = ('rich', 'richiest', 'orichalcum', 'cheers', 'richies')
+single_root_words('rich', *other_words)
+
+def get_multiplied_digits(number):
+    str_number = str(number)
+    first = int(str_number[0])
+    n = 0
+    i = 0
+    for i in str_number:
+        if str_number.endswith('0'):
+            str_number = str_number[:len(str_number)-1]
+        elif len(str_number) > 1:
+            return first * get_multiplied_digits(int(str_number[1:]))
+        else:
+            return first
+
+num = input("Введите число: ")
+print(get_multiplied_digits(num))
 
 other_words = ('rich', 'richiest', 'orichalcum', 'cheers', 'richies')
 single_root_words('rich', *other_words)
