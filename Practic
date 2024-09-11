@@ -95,3 +95,20 @@ print(get_multiplied_digits(num))
 
 other_words = ('rich', 'richiest', 'orichalcum', 'cheers', 'richies')
 single_root_words('rich', *other_words)
+
+2023/10/29 00:00|Домашняя работа по уроку "Атрибуты и методы объекта."
+class House:
+    def __init__(self, name, number_of_floors):
+        self.name = name
+        self.number_of_floors = number_of_floors
+    def go_to(self, new_floor):
+        i = 0
+        self.new_floor = new_floor
+        for i in range(self.new_floor):
+            i += 1
+            print(f'Здание: {self.name}, этаж: {i}')
+            if i >= self.number_of_floors:
+                print('Такого этажа не существует!')
+                break
+
+h1 = House('ЖК Эльбрус', 4)
