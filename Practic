@@ -128,3 +128,49 @@ h1 = House('ЖК Эльбрус', 4)
 
 print(h1.__str__())
 print(h1.__len__())
+
+2023/10/31 00:00|Домашняя работа по уроку "Перегрузка операторов."
+class House:
+    def __init__(self, name, number_of_floors):
+        self.name = name
+        self.number_of_floors = number_of_floors
+
+    def home(self):
+        return f'{self.name}, этажей: {self.number_of_floors}'
+
+    def __eq__(self, other):
+        return f'{self.name}, этажей: {self.number_of_floors}, == , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors == other.number_of_floors}'
+
+    def __lt__(self, other):
+        return f'{self.name}, этажей: {self.number_of_floors}, < , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors < other.number_of_floors}'
+
+    def __le__(self, other):
+        return f'{self.name}, этажей: {self.number_of_floors}, <= , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors <= other.number_of_floors}'
+
+    def __gt__(self, other):
+        return f'{self.name}, этажей: {self.number_of_floors}, > , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors > other.number_of_floors}'
+
+    def __ge__(self, other):
+        return f'{self.name}, этажей: {self.number_of_floors}, >= , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors >= other.number_of_floors}'
+
+    def __ne__(self, other):
+        return f'{self.name}, этажей: {self.number_of_floors}, != , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors != other.number_of_floors}'
+
+    def __add__(self, value):
+        self.number_of_floors += value
+        return home_1.home()
+
+
+
+home_1 = House('ЖК Развитие', 20)
+
+home_2 = House('ЖК Отрадное', 30)
+
+print(home_1.home())
+print(home_1.__add__(10))
+print(home_1 == home_2)
+print(home_1 <= home_2)
+print(home_1 >= home_2)
+print(home_1 > home_2)
+print(home_1 < home_2)
+print(home_1 != home_2)
