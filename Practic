@@ -18,45 +18,65 @@ class House:
         self.name = name
         self.number_of_floors = number_of_floors
 
-    def home(self):
+    def __str__(self):
         return f'{self.name}, этажей: {self.number_of_floors}'
 
     def __eq__(self, other):
-        return f'{self.name}, этажей: {self.number_of_floors}, == , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors == other.number_of_floors}'
+        if isinstance(other.number_of_floors, int) and isinstance(other, House):
+            return f'{self.name}, этажей: {self.number_of_floors}, == , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors == other.number_of_floors}'
 
     def __lt__(self, other):
-        return f'{self.name}, этажей: {self.number_of_floors}, < , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors < other.number_of_floors}'
+        if isinstance(other.number_of_floors, int) and isinstance(other, House):
+            return f'{self.name}, этажей: {self.number_of_floors}, < , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors < other.number_of_floors}'
 
     def __le__(self, other):
-        return f'{self.name}, этажей: {self.number_of_floors}, <= , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors <= other.number_of_floors}'
+        if isinstance(other.number_of_floors, int) and isinstance(other, House):
+            return f'{self.name}, этажей: {self.number_of_floors}, <= , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors <= other.number_of_floors}'
 
     def __gt__(self, other):
-        return f'{self.name}, этажей: {self.number_of_floors}, > , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors > other.number_of_floors}'
+        if isinstance(other.number_of_floors, int) and isinstance(other, House):
+            return f'{self.name}, этажей: {self.number_of_floors}, > , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors > other.number_of_floors}'
 
     def __ge__(self, other):
-        return f'{self.name}, этажей: {self.number_of_floors}, >= , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors >= other.number_of_floors}'
+        if isinstance(other.number_of_floors, int) and isinstance(other, House):
+            return f'{self.name}, этажей: {self.number_of_floors}, >= , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors >= other.number_of_floors}'
 
     def __ne__(self, other):
-        return f'{self.name}, этажей: {self.number_of_floors}, != , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors != other.number_of_floors}'
+        if isinstance(other.number_of_floors, int) and isinstance(other, House):
+            return f'{self.name}, этажей: {self.number_of_floors}, != , {other.name}, этажей: {other.number_of_floors}, {self.number_of_floors != other.number_of_floors}'
 
     def __add__(self, value):
-        self.number_of_floors += value
-        return home_1.home()
+        if isinstance(self.number_of_floors, int):
+            self.number_of_floors += value
+        return self
 
+    def __radd__(self, value):
+        if isinstance(value, int):
+            self.number_of_floors = self.number_of_floors + value
+        return self
+
+    def __iadd__(self, value):
+        if isinstance(value, int):
+            self.number_of_floors += value
+        return self
 
 
 home_1 = House('ЖК Развитие', 20)
 
 home_2 = House('ЖК Отрадное', 30)
 
-print(home_1.home())
-print(home_1.__add__(10))
+print(home_1.__str__())
+print(home_1.__add__(15))
 print(home_1 == home_2)
 print(home_1 <= home_2)
 print(home_1 >= home_2)
 print(home_1 > home_2)
 print(home_1 < home_2)
 print(home_1 != home_2)
+print(home_1.__iadd__(5))
+print(home_1.__iadd__('5'))
+print(home_1.__radd__(5))
+print(home_1.__radd__('5'))
 2023/11/02 00:00|Домашняя работа по уроку "Различие атрибутов класса и экземпляра."
 
 class House:
